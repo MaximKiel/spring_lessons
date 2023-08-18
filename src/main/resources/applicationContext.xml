@@ -7,37 +7,5 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
-    <bean id="musicBean"
-          class="org.example.ClassicalMusic"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          factory-method="getClassicalMusic"
-    />
-
-<!--    <bean id="musicBean1"-->
-<!--          class="org.example.ClassicalMusic">-->
-<!--    </bean>-->
-<!--    <bean id="musicBean2"-->
-<!--          class="org.example.RockMusic">-->
-<!--    </bean>-->
-<!--    <bean id="musicBean3"-->
-<!--          class="org.example.JazzMusic">-->
-<!--    </bean>-->
-
-    <bean id="musicPlayer"
-          class="org.example.MusicPlayer"
-          scope="prototype">
-        <property name="music" ref="musicBean"/>
-<!--        <constructor-arg ref="musicBean"/>-->
-<!--        <property name="musicList">-->
-<!--            <list value-type="org.example.Music">-->
-<!--                <ref bean="musicBean1"/>-->
-<!--                <ref bean="musicBean2"/>-->
-<!--                <ref bean="musicBean3"/>-->
-<!--            </list>-->
-<!--        </property>-->
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer,volume}"/>
-    </bean>
+    <context:component-scan base-package="org.example"/>
 </beans>
