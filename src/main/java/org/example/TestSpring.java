@@ -1,11 +1,11 @@
 package org.example;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class TestSpring {
-//    Следующее видео: "Аннотации. Введение"
+//    Следующее видео: "Spring MVC. Теория"
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 
         MusicPlayer player = context.getBean("musicPlayer", MusicPlayer.class);
         player.playMusic();
