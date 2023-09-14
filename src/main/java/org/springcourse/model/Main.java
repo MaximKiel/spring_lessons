@@ -14,8 +14,13 @@ public class Main {
         try {
             session.beginTransaction();
 
-            Person person = session.get(Person.class, 1);
-            System.out.println(person.getName());
+            Person person1 = new Person("Max", 25);
+            Person person2 = new Person("Bill", 27);
+            Person person3 = new Person("Rob", 30);
+
+            session.save(person1);
+            session.save(person2);
+            session.save(person3);
 
             session.getTransaction().commit();
         } finally {
