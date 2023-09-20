@@ -1,11 +1,12 @@
 package org.springcourse.controllers;
 
-import org.springcourse.dao.PersonDAO;
-import org.springcourse.models.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springcourse.dao.PersonDAO;
+import org.springcourse.models.Person;
 
 import javax.validation.Valid;
 
@@ -15,6 +16,7 @@ public class PeopleController {
 
     private final PersonDAO personDAO;
 
+    @Autowired
     public PeopleController(PersonDAO personDAO) {
         this.personDAO = personDAO;
     }
