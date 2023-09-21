@@ -1,5 +1,6 @@
 package org.springcourse.controllers;
 
+import org.springcourse.service.ItemsService;
 import org.springcourse.service.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,15 +16,22 @@ import javax.validation.Valid;
 public class PeopleController {
 
     private final PeopleService peopleService;
+    private final ItemsService itemsService;
 
     @Autowired
-    public PeopleController(PeopleService peopleService) {
+    public PeopleController(PeopleService peopleService, ItemsService itemsService) {
         this.peopleService = peopleService;
+        this.itemsService = itemsService;
     }
 
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("people", peopleService.findAll());
+
+        itemsService.findByItemName("Book");
+        itemsService.findByOwner(peopleService.findAll().get(0));
+        peopleService.test();
+
         return "people/index";
     }
 
