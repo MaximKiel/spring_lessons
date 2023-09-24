@@ -1,5 +1,6 @@
 package org.springcourse.controllers;
 
+import org.springcourse.dao.PersonDAO;
 import org.springcourse.service.ItemsService;
 import org.springcourse.service.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +18,20 @@ public class PeopleController {
 
     private final PeopleService peopleService;
     private final ItemsService itemsService;
+    private final PersonDAO personDAO;
+
 
     @Autowired
-    public PeopleController(PeopleService peopleService, ItemsService itemsService) {
+    public PeopleController(PeopleService peopleService, ItemsService itemsService, PersonDAO personDAO) {
         this.peopleService = peopleService;
         this.itemsService = itemsService;
+        this.personDAO = personDAO;
     }
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("people", peopleService.findAll());
+//        model.addAttribute("people", peopleService.findAll());
+        personDAO.testN();
         return "people/index";
     }
 
