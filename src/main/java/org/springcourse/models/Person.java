@@ -31,6 +31,9 @@ public class Person {
     @Column(name = "email")
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    private Mood mood;
+
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -117,5 +120,13 @@ public class Person {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Mood getMood() {
+        return mood;
+    }
+
+    public void setMood(Mood mood) {
+        this.mood = mood;
     }
 }
